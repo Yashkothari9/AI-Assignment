@@ -85,21 +85,21 @@ void TSP(vector<pair<int,int>> ver[],vector<int> hur,int V,int E)
     priority_queue <pi, vector<pi>, greater<pi>> open;//Declaring the open list using min priority_queue of pairs
                                                       //pi -> represents the pair of the total f(n) cost and the second value consists of the node no.
     vector<int> pth;//will store the actual cost
-    vector<int> closed;//closed list
-    open.push(hur[0]);
-    int i=;
-    int g(n)=0;
+    vector<int> close;//closed list
+    open.push(make_pair(hur[0],0));
+    int i=0;
+    int gn=0;
     int tot_cost=0;//calculating the total cost
-    closed.push_back(0);
+    close.push_back(0);
     int pt=0;//storing the next point that would be choosed after calculating the A* cost
     while(i<V)
     {
         //calculating the f(n)=g(n)+h(n) value of the new node
-        int f(n)=0;
+        int fn=0;
         int co=0;
         int k=1;
         int tp;
-        while(k<close.size()&&co.size()>1)
+        while(k<close.size()&&close.size()>1)
             {
                 co+=ver[close[k-1]][close[k]].second;//we are calculating the cost uptill the node of last node of close
             k++;
@@ -107,10 +107,10 @@ void TSP(vector<pair<int,int>> ver[],vector<int> hur,int V,int E)
         for(int j=0;j<ver[pt].size();i++)
         {
 
-            g(n)=co+ver[pt][j].second;
-            int h(n)=hur[ver[pt][j].first];
-            f(n)=g(n)+h(n);
-            open.push(make_pair(h(n),ver[pt][j].first));
+            gn=co+ver[pt][j].second;
+            int hn=hur[ver[pt][j].first];//calculating heuristics
+            fn=gn+hn;
+            open.push(make_pair(hn,ver[pt][j].first));
         }
         i++;
          tp=open.top().second;
@@ -118,8 +118,8 @@ void TSP(vector<pair<int,int>> ver[],vector<int> hur,int V,int E)
         pt=tp;
         open.pop();
     }
-    int l=0;
-            while(l<close.size()&&co.size()>1)
+    int l=1;
+            while(l<close.size())
             {
                 tot_cost+=ver[close[l-1]][close[l]].second;//we are calculating the cost uptill the node of last node of close
             l++;
@@ -162,5 +162,6 @@ int main()
     {
         cout<<"heuristic of "<<i+1<<"th node is: "<<hur[i]<<"\n";
     }
+    TSP(ver,hur,V,E);
     return 0;
 }
