@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+typedef pair<int,int> pi;
 int isPresent(vector<int> a,int x)
 {
     for(int i=0;i<a.size();i++)
@@ -81,29 +82,55 @@ vector<int> calc_heu(vector<pair<int,int>> ver[],int V)
 }
 void TSP(vector<pair<int,int>> ver[],vector<int> hur,int V,int E)
 {
-    priority_queue <int, vector<int>, greater<int>> open;//Declaring the open list using min priority_queue
+    priority_queue <pi, vector<pi>, greater<pi>> open;//Declaring the open list using min priority_queue of pairs
+                                                      //pi -> represents the pair of the total f(n) cost and the second value consists of the node no.
     vector<int> pth;//will store the actual cost
+    vector<int> closed;//closed list
     open.push(hur[0]);
-    int i=0;
+    int i=;
     int g(n)=0;
-    int tot_cost=0;
+    int tot_cost=0;//calculating the total cost
+    closed.push_back(0);
     int pt=0;//storing the next point that would be choosed after calculating the A* cost
     while(i<V)
     {
-        int min=INT_MAX;
-        int lo=-1;
         //calculating the f(n)=g(n)+h(n) value of the new node
+        int f(n)=0;
+        int co=0;
+        int k=1;
+        int tp;
+        while(k<close.size()&&co.size()>1)
+            {
+                co+=ver[close[k-1]][close[k]].second;//we are calculating the cost uptill the node of last node of close
+            k++;
+            }
         for(int j=0;j<ver[pt].size();i++)
         {
-            g(n)=ver[pt][j].second;
-            int h(n)=
-            open.push()
-            /*if(min>(hur[ver[pt][j].first]+g(n)))
-            {
-                min=(hur[ver[pt][j].first]+g(n));
-            }*/
+
+            g(n)=co+ver[pt][j].second;
+            int h(n)=hur[ver[pt][j].first];
+            f(n)=g(n)+h(n);
+            open.push(make_pair(h(n),ver[pt][j].first));
         }
+        i++;
+         tp=open.top().second;
+        close.push_back(tp);
+        pt=tp;
+        open.pop();
     }
+    int l=0;
+            while(l<close.size()&&co.size()>1)
+            {
+                tot_cost+=ver[close[l-1]][close[l]].second;//we are calculating the cost uptill the node of last node of close
+            l++;
+            }
+    cout<<"the cost is- ";
+    cout<<tot_cost<<"\n";
+    cout<<"the path is\n";
+    for(int i=0;i<close.size();i++)
+    {
+        cout<<close[i]<<"->";
+    }cout<<"\n";
 }
 int main()
 {
