@@ -1,0 +1,4 @@
+N students need to be distributed in k groups using the marks 
+in m subjects such that diversity minimizes .For each student 
+m subjects marks are assigned.Construct the above algo using 
+genetic algorithm.

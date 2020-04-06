@@ -1,0 +1,2 @@
+Design a 8 queen problem using Uniform Cost search algorithm.
+
