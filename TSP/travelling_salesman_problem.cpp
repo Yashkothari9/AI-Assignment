@@ -12,7 +12,7 @@ int isPresent(vector<int> a,int x)
     }
     return 0;
 }
-//this function will be used to sort by compairing the first element of the pair
+//this function will be used to sort by comparing the first element of the pair
 bool sortbyfirst(const pair<int,int> &a,
 			const pair<int,int> &b)
 {
@@ -21,14 +21,14 @@ bool sortbyfirst(const pair<int,int> &a,
 //DOING USING GREEDY FUNCTION
 vector<int> calc_heu(vector<pair<int,int>> ver[],int V)
 {
-    vector<int> path;//will store the heuristic path i.e the greedy path
+    vector<int> path;//will store the heuristic path i.e the greedy path i.e the next minimum weighted node
     path.push_back(0);
-    int min;
+
     int next=-1;
     int cost=0;//calculating the total heuristics
     int point=0;
     int i=0;
-    cout<<"reached\n";
+//    cout<<"reached\n";
     while(i<V)
     {
         i++;
@@ -36,6 +36,7 @@ vector<int> calc_heu(vector<pair<int,int>> ver[],int V)
         int loc =-1;//loc will store the minimum weight node
         //here point refers to the current node in which we are currently present and loc will be used to find the next minimum
         //to store the minimum next node
+        int min=0;
         for(int j=0;j<ver[point].size();j++)
         {
             if(ver[point][j].second<min)
@@ -66,7 +67,7 @@ vector<int> calc_heu(vector<pair<int,int>> ver[],int V)
     }
     int k=0;
     int ccost=cost;//making an instance of cost
-    vector<int> heuristic;//first will initialize the calculated huri
+    vector<int> heuristic;//first will initialize the calculated heuristic
     for(int i=0;i<V;i++)
     {
         heuristic.push_back(0);//intialzing each and every heuristic with 0 initially
