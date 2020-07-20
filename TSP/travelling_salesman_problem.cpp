@@ -152,10 +152,10 @@ int main()
         ver[u].push_back(make_pair(v,w));
     }
     cout<<"done\n";
-    //here we are sortin
+    //here we are sorting
     for(int i=0;i<V;i++)
     {
-        sort(ver[i].begin(),ver[i].end(),sortbyfirst);//sortbyfirst function is used to sort the vector using the first
+        sort(ver[i].begin(),ver[i].end(),sortbyfirst);//sortbyfirst function is used to sort the vector using the first element of the pair
     }
     vector<int> hur=calc_heu(ver,V);
    // TSP(ver,hur,V,E);
